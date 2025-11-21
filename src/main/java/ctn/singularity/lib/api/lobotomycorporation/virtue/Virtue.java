@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import ctn.ctnapi.client.util.ColorUtil;
 import ctn.singularity.lib.api.ColourText;
 import ctn.singularity.lib.core.LibMain;
-import ctn.singularity.lib.init.LibAttachments;
+import ctn.singularity.lib.init.world.LibAttachments;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.Holder;
 import net.minecraft.network.codec.ByteBufCodecs;

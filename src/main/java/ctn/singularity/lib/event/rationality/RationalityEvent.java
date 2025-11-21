@@ -1,6 +1,6 @@
 package ctn.singularity.lib.event.rationality;
 
-import ctn.singularity.lib.init.LibAttributes;
+import ctn.singularity.lib.init.world.LibAttributes;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.fml.event.IModBusEvent;

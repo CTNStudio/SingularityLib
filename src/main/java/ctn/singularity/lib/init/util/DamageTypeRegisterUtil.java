@@ -1,7 +1,7 @@
 package ctn.singularity.lib.init.util;
 
 import ctn.singularity.lib.core.LibMain;
-import ctn.singularity.lib.init.LibDamageTypes;
+import ctn.singularity.lib.init.world.LibDamageTypes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

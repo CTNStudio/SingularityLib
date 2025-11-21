@@ -6,7 +6,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.model.GeoModel;
 
-@OnlyIn(Dist.CLIENT)
+
 public abstract class BasicGeoModel<T extends GeoAnimatable> extends GeoModel<T> {
   public final ResourceLocation modelPath;
   public final ResourceLocation texturePath;

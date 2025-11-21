@@ -1,6 +1,6 @@
 package ctn.singularity.lib.api.lobotomycorporation.util;
 
-import ctn.singularity.lib.init.LibAttachments;
+import ctn.singularity.lib.init.world.LibAttachments;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 

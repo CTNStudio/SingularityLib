@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
-public class ConfigUtil {
+public abstract class ConfigUtil {
   protected static ModConfigSpec.@NotNull DoubleValue define(ModConfigSpec.@NotNull Builder builder,
                                                              double defaultValue, double min, double max,
                                                              String key, String... comment) {

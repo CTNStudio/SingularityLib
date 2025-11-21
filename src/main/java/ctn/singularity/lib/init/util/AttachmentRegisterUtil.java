@@ -1,6 +1,6 @@
 package ctn.singularity.lib.init.util;
 
-import ctn.singularity.lib.init.LibAttachments;
+import ctn.singularity.lib.init.world.LibAttachments;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.attachment.IAttachmentHolder;

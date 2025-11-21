@@ -1,0 +1,10 @@
+{
+  "textures": [
+    "singularitylib:physics",
+    "singularitylib:spirit",
+    "singularitylib:erosion",
+    "singularitylib:the_soul",
+    "singularitylib:add_prudence",
+    "singularitylib:reduce_prudence"
+  ]
+}

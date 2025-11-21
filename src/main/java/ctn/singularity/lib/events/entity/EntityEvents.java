@@ -4,7 +4,8 @@ import ctn.singularity.lib.api.lobotomycorporation.LcDamage;
 import ctn.singularity.lib.api.lobotomycorporation.LcLevel;
 import ctn.singularity.lib.api.lobotomycorporation.util.LcDamageUtil;
 import ctn.singularity.lib.api.lobotomycorporation.util.RationalityUtil;
-import ctn.singularity.lib.client.particles.TextParticle;
+import ctn.singularity.lib.client.particle.TextParticle;
+import ctn.singularity.lib.client.util.ParticleUtil;
 import ctn.singularity.lib.core.LibMain;
 import ctn.singularity.lib.eventexecute.LcDamageEventExecutes;
 import ctn.singularity.lib.mixinextend.IModDamageSource;
@@ -21,7 +22,6 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.damagesource.DamageContainer;
-import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -55,7 +55,7 @@ public final class EntityEvents {
 		LivingEntity entity = event.getEntity();
 
 		if (amount > 0) {
-			TextParticle.createHealParticles(entity, Component.literal(String.format("+%.2f", amount)), false);
+      ParticleUtil.createTextParticles(entity, ParticleUtil.getText(amount), false, true);
 		}
 	}
 
@@ -97,7 +97,7 @@ public final class EntityEvents {
       if (entity instanceof Player player && modifyRationality) {
         RationalityUtil.modifyRationalityValue(player, -newDamage, true);
         if (lcDamage == LcDamage.SPIRIT){
-          TextParticle.createHealParticles(entity, TextParticle.getText(newDamage, false), true);
+//          ParticleUtil.createTextParticles(player, newDamage, true, false);
           event.getContainer().setPostAttackInvulnerabilityTicks(0);
           event.setNewDamage(0);
           return;
@@ -120,7 +120,7 @@ public final class EntityEvents {
 
     if (entity instanceof Player player && modifyRationality) {
       RationalityUtil.modifyRationalityValue(player, newDamage, true);
-      TextParticle.createHealParticles(entity, TextParticle.getText(newDamage, true), true);
+      ParticleUtil.createTextParticles(player, newDamage, true, true);
     }
 
     LcDamageEventExecutes.heal(event, newDamage, entity);

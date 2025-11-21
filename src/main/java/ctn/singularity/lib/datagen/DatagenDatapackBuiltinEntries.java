@@ -1,7 +1,7 @@
 package ctn.singularity.lib.datagen;
 
 import ctn.singularity.lib.core.LibMain;
-import ctn.singularity.lib.init.LibDamageTypes;
+import ctn.singularity.lib.init.world.LibDamageTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * 创建一个数据包内置条目
  */
-public class DatagenDatapackBuiltinEntries extends DatapackBuiltinEntriesProvider {
+public final class DatagenDatapackBuiltinEntries extends DatapackBuiltinEntriesProvider {
   public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
     .add(Registries.DAMAGE_TYPE, LibDamageTypes::bootstrap);
 

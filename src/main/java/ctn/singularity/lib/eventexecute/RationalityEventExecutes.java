@@ -1,8 +1,8 @@
 package ctn.singularity.lib.eventexecute;
 
 import ctn.singularity.lib.api.lobotomycorporation.util.RationalityUtil;
-import ctn.singularity.lib.core.LibConfig;
-import ctn.singularity.lib.init.LibAttributes;
+import ctn.singularity.lib.config.LibConfig;
+import ctn.singularity.lib.init.world.LibAttributes;
 import net.minecraft.server.level.ServerPlayer;
 
 public final class RationalityEventExecutes {

@@ -1,10 +1,10 @@
 package ctn.singularity.lib.init.util;
 
-import ctn.singularity.lib.common.attribute.BasicAttribute;
-import ctn.singularity.lib.common.attribute.MaxAttribute;
-import ctn.singularity.lib.common.attribute.MinAttribute;
+import ctn.singularity.lib.common.world.attribute.BasicAttribute;
+import ctn.singularity.lib.common.world.attribute.MaxAttribute;
+import ctn.singularity.lib.common.world.attribute.MinAttribute;
 import ctn.singularity.lib.core.LibMain;
-import ctn.singularity.lib.init.LibAttributes;
+import ctn.singularity.lib.init.world.LibAttributes;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.neoforged.neoforge.common.BooleanAttribute;

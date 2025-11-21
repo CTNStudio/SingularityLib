@@ -6,7 +6,7 @@ import net.neoforged.fml.ModLoader;
 
 import java.util.Map;
 
-public class LibEventHooks {
+public final class LibEventHooks {
   public static Map.Entry<Boolean, Float> sourceRationalityPre(Player player, float oldValue, float newValue) {
     var event = new RationalityModifyEvent.Pre(player, oldValue, newValue);
     ModLoader.postEvent(event);

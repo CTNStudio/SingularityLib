@@ -1,7 +1,7 @@
 package ctn.singularity.lib.api.lobotomycorporation.virtue;
 
 import ctn.singularity.lib.core.LibMain;
-import ctn.singularity.lib.init.LibAttributes;
+import ctn.singularity.lib.init.world.LibAttributes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.RegistryFriendlyByteBuf;

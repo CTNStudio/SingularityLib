@@ -1,6 +1,6 @@
 package ctn.singularity.lib.api.lobotomycorporation;
 
-import ctn.singularity.lib.init.LibDamageTypes;
+import ctn.singularity.lib.init.world.LibDamageTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;

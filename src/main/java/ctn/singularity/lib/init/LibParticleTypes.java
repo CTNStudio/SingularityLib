@@ -1,6 +1,6 @@
 package ctn.singularity.lib.init;
 
-import ctn.singularity.lib.client.particles.TextParticle;
+import ctn.singularity.lib.client.particle.TextParticleOptions;
 import ctn.singularity.lib.core.LibMain;
 import ctn.singularity.lib.init.util.ParticleTypeRegisterUtil;
 import net.minecraft.core.particles.ParticleType;
@@ -13,6 +13,6 @@ import java.util.function.Supplier;
 public final class LibParticleTypes extends ParticleTypeRegisterUtil {
 	public static final DeferredRegister<ParticleType<?>> REGISTRY = LibMain.modRegister(BuiltInRegistries.PARTICLE_TYPE);
 
-	public static final Supplier<ParticleType<TextParticle.Options>> TEXT_PARTICLE_TYPE =
-			register("text_particle", false, TextParticle.Options.CODEC, TextParticle.Options.STREAM_CODEC);
+  public static final Supplier<ParticleType<TextParticleOptions>> TEXT_PARTICLE_TYPE = register("text_particle",
+    false, TextParticleOptions.CODEC, TextParticleOptions.STREAM_CODEC);
 }

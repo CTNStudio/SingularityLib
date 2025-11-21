@@ -1,0 +1,8 @@
+{
+  "pack": {
+    "description": {
+      "translate": "pack.singularitylib.description"
+    },
+    "pack_format": 48
+  }
+}

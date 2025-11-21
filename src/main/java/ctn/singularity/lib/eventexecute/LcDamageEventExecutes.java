@@ -6,7 +6,8 @@ import ctn.singularity.lib.api.lobotomycorporation.util.LcDamageUtil;
 import ctn.singularity.lib.api.lobotomycorporation.util.RationalityUtil;
 import ctn.singularity.lib.capability.ILcLevel;
 import ctn.singularity.lib.capability.entity.IAbnos;
-import ctn.singularity.lib.client.particles.TextParticle;
+import ctn.singularity.lib.client.particle.TextParticle;
+import ctn.singularity.lib.client.util.ParticleUtil;
 import ctn.singularity.lib.mixinextend.IModDamageSource;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
@@ -14,6 +15,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -31,7 +33,7 @@ public final class LcDamageEventExecutes {
   public static void heal(final LivingDamageEvent.Pre event, final float newDamage, final LivingEntity entity) {
     float healed = Math.abs(newDamage);
     entity.heal(healed);
-    TextParticle.createHealParticles(entity, TextParticle.getText(healed, true), false);
+    ParticleUtil.createTextParticles(entity, healed, false, true);
     event.getContainer().setPostAttackInvulnerabilityTicks(0);
     event.setNewDamage(0);
   }
@@ -93,7 +95,10 @@ public final class LcDamageEventExecutes {
     // 伤害类型
     if (lcDamageTypes != null) {
       // 抗性处理
-      newDamageAmount *= (float) entity.getAttributeValue(lcDamageTypes.getResistance());
+      var attributeInstance = entity.getAttribute(lcDamageTypes.getResistance());
+      if (attributeInstance != null) {
+        newDamageAmount *= (float) attributeInstance.getValue();
+      }
     }
 
     event.setAmount(newDamageAmount);
@@ -104,18 +109,19 @@ public final class LcDamageEventExecutes {
    */
   public static void appliedDamageToEntity(final LivingEntity entity, final DamageSource source, final float newDamage) {
     if (entity instanceof Player player) {
-//      RationalityUtil.setHurtTick(player, 10 * 20);
       RationalityUtil.setRationalityRecoveryTick(player, 10 * 20);
     }
 
-    LcDamage lcDamage = IModDamageSource.of(source).getLcDamage();
-
     // 低抗缓慢
-    if (lcDamage != null && entity.getAttributeValue(lcDamage.getResistance()) > 1.0) {
+    AttributeInstance attributeInstance;
+    LcDamage lcDamage = IModDamageSource.of(source).getLcDamage();
+    if (lcDamage != null &&
+      (attributeInstance = entity.getAttribute(lcDamage.getResistance())) != null &&
+      attributeInstance.getValue() > 1.0) {
       entity.addEffect(new MobEffectInstance(MOVEMENT_SLOWDOWN, 20, 2));
     }
 
     // 生成粒子
-    TextParticle.createDamageParticles(source.typeHolder().getKey(), lcDamage, entity, TextParticle.getText(newDamage, false), false);
+    ParticleUtil.createTextParticles(entity, lcDamage != null ? lcDamage.getDamageType() : source.typeHolder().getKey(), newDamage, false, false);
   }
 }

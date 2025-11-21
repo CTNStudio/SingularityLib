@@ -1,8 +1,8 @@
 package ctn.singularity.lib.api.lobotomycorporation.util;
 
 import ctn.singularity.lib.core.LibEventHooks;
-import ctn.singularity.lib.init.LibAttachments;
-import ctn.singularity.lib.init.LibAttributes;
+import ctn.singularity.lib.init.world.LibAttachments;
+import ctn.singularity.lib.init.world.LibAttributes;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 

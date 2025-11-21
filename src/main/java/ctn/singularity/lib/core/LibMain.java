@@ -1,10 +1,10 @@
 package ctn.singularity.lib.core;
 
-import ctn.singularity.lib.ModMainkt;
 import ctn.singularity.lib.api.lobotomycorporation.LcDamage;
-import ctn.singularity.lib.init.LibAttachments;
-import ctn.singularity.lib.init.LibAttributes;
-import ctn.singularity.lib.init.LibDamageTypes;
+import ctn.singularity.lib.config.LibConfig;
+import ctn.singularity.lib.init.world.LibAttachments;
+import ctn.singularity.lib.init.world.LibAttributes;
+import ctn.singularity.lib.init.world.LibDamageTypes;
 import ctn.singularity.lib.init.LibParticleTypes;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 @Mod(LibMain.LIB_ID)
 public final class LibMain {
-  public static final String LIB_ID = "singularity_lib";
+  public static final String LIB_ID = "singularitylib";
   public static final String LIB_NAME = "SingularityLib";
   public static final Logger LOGGER = LogManager.getLogger(LIB_ID);
 
@@ -32,7 +32,6 @@ public final class LibMain {
     LibDamageTypes.REGISTRY.register(modEventBus);
     LibAttachments.REGISTRY.register(modEventBus);
     LibParticleTypes.REGISTRY.register(modEventBus);
-    ModMainkt.modMain(modEventBus);
     modEventBus.addListener(this::commonSetup);
   }
 
