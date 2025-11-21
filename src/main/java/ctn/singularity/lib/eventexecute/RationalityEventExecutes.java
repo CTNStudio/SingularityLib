@@ -22,6 +22,10 @@ public final class RationalityEventExecutes {
       return;
     }
 
+    if (RationalityUtil.getRationalityValue(player) >= RationalityUtil.getMaxRationalityValue(player)) {
+      return;
+    }
+
     float recoveryAmount = (float) player.getAttributeValue(LibAttributes.RATIONALITY_RECOVERY_AMOUNT);
     if (recoveryAmount > 0) {
       RationalityUtil.modifyRationalityValue(player, recoveryAmount, true);

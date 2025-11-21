@@ -61,9 +61,9 @@ public final class RationalityUtil {
         return;
       }
     }
-
-    if (newValue == 0) {
-      player.setData(LibAttachments.RATIONALITY, newValue);
+    float maxRationalityValue = getMaxRationalityValue(player);
+    if (newValue != 0) {
+      player.setData(LibAttachments.RATIONALITY, Math.clamp(newValue, -maxRationalityValue, maxRationalityValue));
     }
 
     if (isEvent) {
