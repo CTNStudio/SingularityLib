@@ -1,0 +1,50 @@
+package ctn.imaginarycraft.config;
+
+import ctn.imaginarycraft.core.ImaginaryCraft;
+import net.neoforged.neoforge.common.ModConfigSpec;
+import org.apache.commons.lang3.tuple.Pair;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.function.Function;
+
+public abstract class ConfigUtil {
+  protected static ModConfigSpec.@NotNull DoubleValue define(ModConfigSpec.@NotNull Builder builder,
+                                                             double defaultValue, double min, double max,
+                                                             String key, String... comment) {
+    return builder.comment(comment)
+      .translation(getTranslation(key))
+      .defineInRange(key, defaultValue, min, max);
+  }
+
+  protected static ModConfigSpec.@NotNull IntValue define(ModConfigSpec.@NotNull Builder builder,
+                                                          int defaultValue, int min, int max,
+                                                          String key, String... comment) {
+    return builder.comment(comment)
+      .translation(getTranslation(key))
+      .defineInRange(key, defaultValue, min, max);
+  }
+
+  protected static ModConfigSpec.@NotNull BooleanValue define(ModConfigSpec.@NotNull Builder builder,
+                                                              boolean defaultValue,
+                                                              String key, String... comment) {
+    return builder.comment(comment)
+      .translation(getTranslation(key))
+      .define(key, defaultValue);
+  }
+
+  public static @NotNull String getTranslation(String @NotNull ... keys) {
+    if (keys.length == 0) {
+      return ImaginaryCraft.ID + ".config";
+    }
+    var builder = new StringBuilder();
+    for (String key : keys) {
+      builder.append(".");
+      builder.append(key);
+    }
+    return ImaginaryCraft.ID + ".config" + builder;
+  }
+
+  protected static <T> @NotNull Pair<T, ModConfigSpec> configure(Function<ModConfigSpec.Builder, T> consumer) {
+    return new ModConfigSpec.Builder().configure(consumer);
+  }
+}
